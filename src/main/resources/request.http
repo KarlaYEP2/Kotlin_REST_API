@@ -1,0 +1,14 @@
+### Post 'Minecraft"
+POST http://localhost:8080/game
+Content-Type: application/json
+
+{
+  "gameName": "Minecraft 3"
+}
+
+###
+DELETE http://localhost:8080/game/3
+Content-Type: application/json
+
+{
+}
