@@ -3,7 +3,7 @@ POST http://localhost:8080/game
 Content-Type: application/json
 
 {
-  "gameName": "Minecraft 3"
+  "gameName": "Minecraft 123"
 }
 
 ###
@@ -11,4 +11,12 @@ DELETE http://localhost:8080/game/3
 Content-Type: application/json
 
 {
+}
+
+###
+POST http://localhost:8080/genre
+Content-Type: application/json
+
+{
+"genreType": "MMO"
 }

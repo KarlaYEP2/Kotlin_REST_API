@@ -1,5 +1,6 @@
-package com.example.demo
+package com.example.demo.game
 
+import com.example.demo.GameNames
 import org.springframework.web.bind.annotation.*
 
 @RestController

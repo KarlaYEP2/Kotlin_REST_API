@@ -1,5 +1,7 @@
-package com.example.demo
+package com.example.demo.game
 
+import com.example.demo.GameNames
+import com.example.demo.NotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 
@@ -12,27 +14,27 @@ class GameNameService(private val GameNameRepository: GameNameRepository) {
 
     /** Get game by id */
     fun getGameById(gameId: Long): GameNames = GameNameRepository.findById(gameId)
-        .orElseThrow { GameNotFoundException(HttpStatus.NOT_FOUND, "No matching game was found") }
+        .orElseThrow { NotFoundException(HttpStatus.NOT_FOUND, "No matching games were found") }
 
     /** Creates game */
     fun createGame(game: GameNames): GameNames = GameNameRepository.save(game)
 
     /** Updates game */
-    fun updateGameById(employeeId: Long, game: GameNames): GameNames {
-        return if (GameNameRepository.existsById(employeeId)) {
+    fun updateGameById(gameId: Long, game: GameNames): GameNames {
+        return if (GameNameRepository.existsById(gameId)) {
             GameNameRepository.save(
                 GameNames(
                     id = game.id,
                     gameName = game.gameName
                 )
             )
-        } else throw GameNotFoundException(HttpStatus.NOT_FOUND, "No matching employee was found")
+        } else throw NotFoundException(HttpStatus.NOT_FOUND, "No matching games were found")
     }
 
     /** Deletes game */
     fun deleteGameById(gameId: Long) {
         return if (GameNameRepository.existsById(gameId)) {
             GameNameRepository.deleteById(gameId)
-        } else throw GameNotFoundException(HttpStatus.NOT_FOUND, "No matching employee was found")
+        } else throw NotFoundException(HttpStatus.NOT_FOUND, "No matching games were found")
     }
 }
